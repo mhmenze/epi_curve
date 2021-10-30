@@ -1,6 +1,8 @@
+from altair.vegalite.v4.schema.core import CsvDataFormat
 import pandas as pd
 import streamlit as st
 import altair as alt
+st.title('COVID Data Exploration')
 
 data = pd.read_csv('owid-covid-data.csv')
 
@@ -42,5 +44,7 @@ line = base.mark_line(stroke='#5276A7', interpolate='monotone').encode(
 c = alt.layer(line1, line).resolve_scale(
     y='independent'
 )
-
 st.altair_chart(c, use_container_width=True)
+
+link = '[Download Data](https://covid.ourworldindata.org/data/owid-covid-data.csv)'
+st.markdown(link, unsafe_allow_html=True)

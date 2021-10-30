@@ -46,5 +46,18 @@ c = alt.layer(line1, line).resolve_scale(
 )
 st.altair_chart(c, use_container_width=True)
 
-link = '[Download Data](https://covid.ourworldindata.org/data/owid-covid-data.csv)'
-st.markdown(link, unsafe_allow_html=True)
+
+@st.cache
+def convert_df(data_f):
+    return data_f.to_csv().encode('utf-8')
+
+
+csv = convert_df(data_f)
+
+st.download_button(
+    "Download Data",
+    csv,
+    "owid-covid-data.csv",
+    "text/csv",
+    key='download-csv'
+)

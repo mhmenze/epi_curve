@@ -2,7 +2,7 @@ from altair.vegalite.v4.schema.core import CsvDataFormat
 import pandas as pd
 import streamlit as st
 import altair as alt
-st.title('COVID Data Exploration')
+st.title('COVID Data Explorer')
 
 data = pd.read_csv('owid-covid-data.csv')
 

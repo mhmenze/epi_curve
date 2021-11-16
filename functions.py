@@ -49,7 +49,7 @@ st.altair_chart(c, use_container_width=True)
 
 @st.cache
 def convert_df(data_f):
-    return data_f.to_csv().encode('utf-8')
+    return data_f.to_csv(index=False).encode('utf-8')
 
 
 csv = convert_df(data_f)
